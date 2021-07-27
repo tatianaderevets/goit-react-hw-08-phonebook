@@ -1,49 +1,38 @@
-// import './App.css';
-import { Component } from "react";
-import { connect } from "react-redux";
-import Form from "./components/ContactForm";
-import ContactsList from "./components/ContactsList";
-import Filter from "./components/Filter";
-import { contactsOperation, contactsSelectors } from './redux/contacts'
-
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Container from './components/Container';
+import HomeView from './views/HomeView';
+import ContactsView from './views/ContactsView';
+import AppBar from './components/AppBar';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginViev';
+import { authOperations } from './redux/auth'
+import { connect } from 'react-redux';
 
 
 class App extends Component {
-
-  state = {
-    
-  };
-
   componentDidMount() {
-    this.props.fetchContacts();
-}
-
-render() {
-    
-
-    return (
-      <div>
-        <h1>Phonebook</h1>
-        <Form />
-      
-        <h2>Contacts</h2>
-        <Filter />
-        {this.props.isLoadingcontacts && <h2>Loading...</h2>}
-        
-        <ContactsList />
-        
-      </div>
-
-    );
+    this.props.onGetCurretnUser();
   }
+
+    render() {
+        return (
+            <Container>
+                <AppBar />
+
+                <Switch>
+                    <Route exact path="/" component={HomeView} />
+                    <Route path="/register" component={RegisterView} />
+                    <Route path="/login" component={LoginView} />
+                    <Route path="/contacts" component={ContactsView} />
+                </Switch>
+            </Container>
+        );
+    }
 }
 
-const mapStateToProps = state => ({
-  isLoadingcontacts: contactsSelectors.getLoading(state),
-})
+const mapDispatchToProps = {
+  onGetCurretnUser: authOperations.getCurrentUser,
+};
 
-const mapDispatchToProps = dispatch => ({
-  fetchContacts: () =>  dispatch(contactsOperation.fetchContacts())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

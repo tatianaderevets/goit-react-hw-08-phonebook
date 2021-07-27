@@ -12,15 +12,15 @@ import {
 } from './contacts-actions';
 
 
-axios.defaults.baseURL = 'http://localhost:4040';
+// axios.defaults.baseURL = 'http://localhost:4040';
 
 
 const fetchContacts = () => dispatch => {
     dispatch(featchContactRequest());
 
     axios.get('/contacts')
-       .then(({ data }) => dispatch(featchContactSuccess(data)))
-        .catch(error => dispatch(featchContactError(error)));
+        .then(({ data }) => dispatch(featchContactSuccess(data)))
+        .catch(error => dispatch(featchContactError(error.message)));
 }
 
 const addContact = ({ name, number }) => dispatch => {
@@ -33,7 +33,7 @@ const addContact = ({ name, number }) => dispatch => {
 
     axios.post('/contacts', contact)
         .then(({ data }) => dispatch(addContactSuccess(data)))
-        .catch(error => dispatch(addContactError(error)));
+        .catch(error => dispatch(addContactError(error.message)));
 };
 
 const deleteContact = contactId => dispatch => {
@@ -41,7 +41,7 @@ const deleteContact = contactId => dispatch => {
 
     axios.delete(`/contacts/${contactId}`)
         .then(() => dispatch(deleteContactSuccess(contactId)))
-        .catch(error => dispatch(deleteContactError(error)));
+        .catch(error => dispatch(deleteContactError(error.message)));
 
 }
 
