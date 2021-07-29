@@ -88,7 +88,8 @@ const logOut = () => async dispatch => {
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
 const getCurrentUser = () => async (dispatch, getState) => {
-    const { token: persistedToken
+    const {
+        auth: {token: persistedToken},
     } = getState();
 
     if (!persistedToken) {
@@ -101,8 +102,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
 
     try {
         const response = await axios.get('/users/current');
-    } catch (error) {
 
+        dispatch(authActions.getCurrentUserSuccess(response.data));
+    } catch (error) {
+        dispatch(authActions.getCurrentUserError(error.message));
     }
 };
 
