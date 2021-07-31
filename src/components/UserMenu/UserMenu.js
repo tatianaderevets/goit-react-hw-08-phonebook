@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
-import defaultAvatar from './default-avatar.png';
+import defaultAvatar from './love_red.png';
+
+import { CssBaseline, Button } from '@material-ui/core';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+
 
 const styles = {
     container: {
@@ -19,11 +23,12 @@ const styles = {
 
 const UserMenu = ({ avatar, name, onLogout }) => (
     <div style={styles.container}>
+        <CssBaseline />
         <img src={avatar} alt="" width="32" style={styles.avatar} />
         <span style={styles.name}>Welcome, {name}</span>
-        <button type="button" onClick={onLogout}>
-            Logout
-        </button>
+        <Button type="button" onClick={onLogout}>
+        <LockOpenIcon fontSize="large" style={{ color: 'white' }} />
+      </Button>
     </div>
 );
 const mapStateToProps = state => ({

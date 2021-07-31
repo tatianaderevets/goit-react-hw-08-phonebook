@@ -1,6 +1,5 @@
 import React, { Component, Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Container from './components/Container';
+import { Switch} from 'react-router-dom';
 import AppBar from './components/AppBar';
 import { authOperations } from './redux/auth'
 import { connect } from 'react-redux';
@@ -21,9 +20,9 @@ const ContactsView = lazy(() => import('./views/ContactsView'));
 
     render() {
       return (
-        <Container>
+        <>
           <AppBar />
-          <Suspense fallback={<p>Загружаем...</p>}>
+          <Suspense fallback={<p>Loading...</p>}>
             <Switch>
               <PublicRoute exact path="/" component={HomeView} />
               <PublicRoute
@@ -44,7 +43,7 @@ const ContactsView = lazy(() => import('./views/ContactsView'));
               />
             </Switch>
           </Suspense>
-        </Container>
+        </>
       );
     }
   }

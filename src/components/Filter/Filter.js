@@ -1,16 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import s from './Filter.module.css';
 import { connect } from "react-redux";
 import { contactsSelectors, changeFilter } from "../../redux/contacts";
 
-const Filter = ({value, onChange}) => (
+import { Container, Input, InputAdornment } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+
+const Filter = ({ value, onChange }) => (
+    <Container maxWidth="sm">
+        <div>
     <label>
-        Find contact by name <br />
-        <input type="text"
-            value={value}
+          <Input
+            className={s.filterInput}
+            startAdornment={
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            }
+            type="text"
+                    value={value}
+                    placeholder="find contacts by name..."
             onChange={onChange}
         />
-    </label>
+            </label>
+            </div>
+    </Container>
 );
 
 

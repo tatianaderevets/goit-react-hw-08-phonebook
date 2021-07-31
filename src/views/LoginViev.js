@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import MyButton from '../components/Button';
+import img from '../images/hand.png'
+import {
+  CssBaseline,
+  TextField,
+  Container,
+  Typography,
+} from '@material-ui/core';
 
-const styles = {
-    form: {
-        width: 320,
-    },
-    label: {
-        display: 'flex',
-        flexDirection: 'column',
-        marginBottom: 15,
-    },
-};
+// const styles = {
+//     form: {
+//         width: 320,
+//     },
+//     label: {
+//         display: 'flex',
+//         flexDirection: 'column',
+//         marginBottom: 15,
+//     },
+// };
 
 class LoginView extends Component {
     state = {
@@ -35,37 +43,59 @@ class LoginView extends Component {
         const { email, password } = this.state;
 
         return (
-            <div>
-                <h1>Страница логина</h1>
+            <Container maxWidth="sm">
+                <CssBaseline />
+                {/* <h1>Страница логина</h1> */}
+                 <Typography
+          variant="h3"
+          align="center"
+          color="textPrimary"
+          style={{ margin: '30px' }}
+        >
+          Please, sign in!
+        </Typography>
+
 
                 <form
                     onSubmit={this.handleSubmit}
-                    style={styles.form}
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
                     autoComplete="off"
                 >
-                    <label style={styles.label}>
-                        Почта
-                        <input
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={this.handleChange}
-                        />
-                    </label>
+                   <TextField
+            id="standard-basic"
+            label="e-mail"
+            className="phonebook-input"
+            // type="tel"
+            name="email"
+            value={email}
+            placeholder="e-mail"
+            required
+            onChange={this.handleChange}
+            style={{ marginRight: '20px' }}
+          />
 
-                    <label style={styles.label}>
-                        Пароль
-                        <input
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={this.handleChange}
-                        />
-                    </label>
+                    <TextField
+            id="standard-basic"
+            label="password"
+            className="phonebook-input"
+            // type="tel"
+            name="password"
+            value={password}
+            placeholder="password"
+            type="password"
+            title="Please, more than seven values"
+            required
+            onChange={this.handleChange}
+          />
+                    <MyButton
+            title={'Submit'}
+            style={{ display: 'flex', marginTop: '10px' }}
+          />
 
-                    <button type="submit">Войти</button>
+                    {/* <button type="submit">Войти</button> */}
                 </form>
-            </div>
+                <img alt="img" src={img} width="680px" style = {{  marginTop: '60px' }}></img>
+            </Container>
         );
     }
 }

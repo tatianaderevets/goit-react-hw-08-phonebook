@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import {
+  CssBaseline,
+  Button,
+  TextField,
+  Container,
+  Typography,
+} from '@material-ui/core';
 
-const styles = {
-    form: {
-        width: 320,
-    },
-    label: {
-        display: 'flex',
-        flexDirection: 'column',
-        marginBottom: 15,
-    },
-};
+// const styles = {
+//     form: {
+//         width: 320,
+//     },
+//     label: {
+//         display: 'flex',
+//         flexDirection: 'column',
+//         marginBottom: 15,
+//     },
+// };
 
 class RegisterView extends Component {
     state = {
@@ -36,47 +43,61 @@ class RegisterView extends Component {
         const { name, email, password } = this.state;
 
         return (
-            <div>
-                <h1>Страница регистрации</h1>
+            <Container maxWidth="sm">
+                <CssBaseline />
+               <Typography
+          variant="h4"
+          align="center"
+          color="textPrimary"
+          style={{ marginTop: '60px', marginBottom: '30px' }}
+        >
+          Please, add your Profile!
+        </Typography>
+        <form onSubmit={this.handleSubmit}>
+          <TextField
+            type="text"
+            name="name"
+            value={name}
+            required
+            onChange={this.handleChange}
+            id="standard-basic"
+            label="name"
+            style={{ marginRight: '20px' }}
+          />
 
-                <form
-                    onSubmit={this.handleSubmit}
-                    style={styles.form}
-                    autoComplete="off"
-                >
-                    <label style={styles.label}>
-                        Имя
-                        <input
-                            type="text"
-                            name="name"
-                            value={name}
-                            onChange={this.handleChange}
-                        />
-                    </label>
+                   <TextField
+            type="tel"
+            name="email"
+            value={email}
+            required
+            onChange={this.handleChange}
+            id="standard-basic"
+            label="e-mail"
+            style={{ marginRight: '20px' }}
+          />
 
-                    <label style={styles.label}>
-                        Почта
-                        <input
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-
-                    <label style={styles.label}>
-                        Пароль
-                        <input
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-
-                    <button type="submit">Зарегистрироваться</button>
+          <TextField
+            // type="tel"
+            name="password"
+            value={password}
+            type="password"
+            title="Please, more than seven values"
+            required
+            onChange={this.handleChange}
+            id="standard-basic"
+            label="password"
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className="btnRegister"
+            style={{ marginTop: '40px' }}
+          >
+            Submit
+          </Button>
                 </form>
-            </div>
+           </Container>
         );
     }
 }

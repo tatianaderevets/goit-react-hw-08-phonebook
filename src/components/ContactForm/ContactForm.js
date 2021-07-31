@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import shortid from "shortid";
+import s from './ContactForm.module.css';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
-import { contactsOperation, contactsSelectors } from '../../redux/contacts'
+import { contactsOperation, contactsSelectors } from '../../redux/contacts';
+import MyButton from '../Button';
+
+import { Container, Input, InputAdornment } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CallIcon from '@material-ui/icons/Call';
 
 
 
@@ -50,37 +56,55 @@ class Form extends Component {
     }
     
     render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>
-          Name
+      return (
+          <Container maxWidth="sm">
+          <form onSubmit={this.handleSubmit}>
+             <div className={s.phonebookInputFields}>
+        <label htmlFor={this.nameInputId} className="phonebook-label">
+          
         
-      <input
+      <Input
+                className={s.phonebookInput}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <AccountCircleIcon />
+                  </InputAdornment>
+                }
         type="text"
-        value={this.state.name} onChange={this.handleChange}
+                  value={this.state.name}
+                  onChange={this.handleChange}
         name="name"
-        id={this.nameInputId}
+                  id={this.nameInputId}
+                  placeholder="Tatiana Derevets"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+        title="The name can only consist of letters, apostrophes, dashes and spaces. For example: Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         required
         
         />
         </label>
-        <label>
-          Number
-          <input
+        <label className="phonebook-label">
+         
+         <Input
+                startAdornment={
+                  <InputAdornment position="start">
+                    <CallIcon />
+                  </InputAdornment>
+                }
             type="tel"
-            
+            className={s.phonebookInput}
             name="number"
             value={this.state.number}
             onChange={this.handleChange}
   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-  title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-  required
+  title='The phone number must be 11-12 digits long and can contain numbers, spaces, dashes, pot-bellied brackets and can start with +'
+  placeholder="+380688888888"
+                  required
 />
         </label>
-        <button type="submit">Add contact</button>
-            </form>
+              <MyButton title={'Add contact'} />
+              </div>
+          </form>
+          </Container>
         );
     }
 }

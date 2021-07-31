@@ -1,7 +1,7 @@
 // import './App.css';
 import { Component } from "react";
 import { connect } from "react-redux";
-import Container from "../components/Container";
+// import Container from "../components/Container";
 import Form from "../components/ContactForm";
 import ContactsList from "../components/ContactsList";
 import Filter from "../components/Filter";
@@ -29,19 +29,19 @@ class ContactsView extends Component {
 
 
     return (
-      <Container>
+      <>
         <div >
-          <h1>Phonebook</h1>
+          {this.props.isLoadingcontacts && <h2>Loading...</h2>}
           <Form />
 
-          <h2>Contacts</h2>
+          
           <Filter />
-          {this.props.isLoadingcontacts && <h2>Loading...</h2>}
+          
 
           <ContactsList />
 
         </div>
-      </Container>
+      </>
 
     );
   }
