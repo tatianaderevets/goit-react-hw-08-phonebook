@@ -9,16 +9,6 @@ import {
   Typography,
 } from '@material-ui/core';
 
-// const styles = {
-//     form: {
-//         width: 320,
-//     },
-//     label: {
-//         display: 'flex',
-//         flexDirection: 'column',
-//         marginBottom: 15,
-//     },
-// };
 
 class RegisterView extends Component {
     state = {

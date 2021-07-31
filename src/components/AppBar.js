@@ -7,14 +7,6 @@ import { authSelectors } from '../redux/auth';
 
 import { AppBar, CssBaseline, Toolbar } from '@material-ui/core';
 
-// const styles = {
-//     header: {
-//         display: 'flex',
-//         justifyContent: 'space-between',
-//         alignItems: 'center',
-//         borderBottom: '1px solid #2A363B',
-//     },
-// };
 
 const styles = {
     Toolbar :

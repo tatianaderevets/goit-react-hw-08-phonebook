@@ -6,18 +6,7 @@ import { authSelectors } from '../redux/auth';
 import { Typography, CssBaseline } from '@material-ui/core';
 import { Home } from '@material-ui/icons';
 
-// const styles = {
-//     link: {
-//         display: 'inline-block',
-//         textDecoration: 'none',
-//         padding: 12,
-//         fontWeight: 700,
-//         color: '#2A363B',
-//     },
-//     activeLink: {
-//         color: '#E84A5F',
-//     },
-// };
+
 const styles = {
     navigation :{
   display: "flex",

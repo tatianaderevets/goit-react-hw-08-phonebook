@@ -4,18 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock'
 
-// const styles = {
-//     link: {
-//         display: 'inline-block',
-//         textDecoration: 'none',
-//         padding: 12,
-//         fontWeight: 700,
-//         color: '#2A363B',
-//     },
-//     activeLink: {
-//         color: '#E84A5F',
-//     },
-// };
 
 const styles = {
     authItem: {
@@ -38,14 +26,14 @@ const AuthNav = () => (
             exact
                     style={styles.authItem}
                     
-            // activeStyle={styles.activeLink}
+            
         >
            Registration
                 </NavLink>
             </Typography>
             
                 <NavLink
-                    // style={styles.authItem}
+                   
             to="/login"
             exact
             // style={{ color: 'white' }}

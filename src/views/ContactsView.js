@@ -8,13 +8,6 @@ import Filter from "../components/Filter";
 import { contactsOperation, contactsSelectors } from '../redux/contacts'
 
 
-// const barStyles = {
-//   display: 'flex',
-//   alignItems: 'flex-end',
-//   marginBottom: 20,
-// };
-
-
 class ContactsView extends Component {
 
   state = {
